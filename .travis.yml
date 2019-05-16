@@ -1,5 +1,3 @@
 language: go
 install:
-  - go get github.com/tanaikech/go-fetchall
-script:
-  - go test -v
+  - go get github.com/tanaikech/gistwatcher
