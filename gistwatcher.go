@@ -464,38 +464,46 @@ func handler(c *cli.Context) error {
 func createHelp() *cli.App {
 	a := cli.NewApp()
 	a.Name = appname
-	a.Author = "tanaike [ https://github.com/tanaikech/" + appname + " ] "
-	a.Email = "tanaike@hotmail.com"
-	a.Usage = "Get comments, stars and forks from own Gists."
-	a.Version = "1.0.0"
+	a.Authors = []*cli.Author{
+		{Name: "tanaike [ https://github.com/tanaikech/" + appname + " ] ", Email: "tanaike@hotmail.com"},
+	}
+	a.UsageText = "Get comments, stars and forks from own Gists."
+	a.Version = "1.0.1"
 	a.Flags = []cli.Flag{
-		cli.StringFlag{
-			Name:  "name, n",
-			Usage: "Login name of GitHub.",
+		&cli.StringFlag{
+			Name:    "name, n",
+			Aliases: []string{"n"},
+			Usage:   "Login name of GitHub.",
 		},
-		cli.StringFlag{
-			Name:  "password, p",
-			Usage: "Login password of GitHub.",
+		&cli.StringFlag{
+			Name:    "password, p",
+			Aliases: []string{"p"},
+			Usage:   "Login password of GitHub.",
 		},
-		cli.StringFlag{
-			Name:  "accesstoken, a",
-			Usage: "Access token of GitHub. If you have this, please use this instead of 'name' and 'password'.",
+		&cli.StringFlag{
+			Name:    "accesstoken, a",
+			Aliases: []string{"a"},
+			Usage:   "Access token of GitHub. If you have this, please use this instead of 'name' and 'password'.",
 		},
-		cli.BoolFlag{
-			Name:  "getstars, s",
-			Usage: "If you want to also retrieve the number of stars and forks, please use this.",
+		&cli.BoolFlag{
+			Name:    "getstars, s",
+			Aliases: []string{"s"},
+			Usage:   "If you want to also retrieve the number of stars and forks, please use this.",
 		},
-		cli.StringFlag{
-			Name:  "username, user",
-			Usage: "User name of Gist you want to get. If you want to retrieve a specific user's Gists, please use this.",
+		&cli.StringFlag{
+			Name:    "username, user",
+			Aliases: []string{"user"},
+			Usage:   "User name of Gist you want to get. If you want to retrieve a specific user's Gists, please use this.",
 		},
-		cli.StringFlag{
-			Name:  "url, u",
-			Usage: "URL of Gists you want to retrieve. You can also use Gist's ID instead of URL.",
+		&cli.StringFlag{
+			Name:    "url, u",
+			Aliases: []string{"u"},
+			Usage:   "URL of Gists you want to retrieve. You can also use Gist's ID instead of URL.",
 		},
-		cli.StringFlag{
-			Name:  "file, f",
-			Usage: "Filename including URLs of Gists you want to retrieve.",
+		&cli.StringFlag{
+			Name:    "file, f",
+			Aliases: []string{"f"},
+			Usage:   "Filename including URLs of Gists you want to retrieve.",
 		},
 	}
 	return a
